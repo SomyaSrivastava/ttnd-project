@@ -1,0 +1,57 @@
+.header {
+    background-color: #fff;
+    border: 2px solid;
+    border-radius: 20px;
+}
+.header a{
+    font-size: 36px;
+    line-height: 2;
+    text-decoration: underline;
+}
+.searchSpan {
+    margin: 21px;
+    padding: 4px;
+    border: 1px solid;
+    border-radius: 21px;
+}
+.noborder{
+    border:none;
+}
+.icon {
+    display: inline-block;
+}
+.linkshare {
+    width: 53%;
+    display: inline-block;
+}
+select {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+i {
+    margin-right: 10px;
+}
+.dropdown, .dropup {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-menu>li>a {
+    text-decoration: none;
+    font-size: 13px;
+}button.btn.btn-default.dropdown-toggle {
+     border: none;
+ }

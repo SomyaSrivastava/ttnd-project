@@ -1,0 +1,132 @@
+.header {
+    background-color: #fff;
+    border: 2px solid;
+    border-radius: 20px;
+}
+.header a{
+	font-size: 36px; 
+	line-height: 2;
+    text-decoration: underline;
+}
+
+.myHeight {
+    height: 200px;
+    text-align: center;
+    background-color: #00BCD4;
+    color: red;
+    margin-top: 12px;
+}
+.first{
+	color: black;
+    background-color: rgba(128, 128, 128, 0.43);
+    height: auto;
+}
+.next{
+    margin-top: 15px;
+}
+.divdesign {
+    color: red;
+    background-color: rgba(128, 128, 128, 0.43);
+    height: 100px;
+    text-align: center;
+}
+.footdesign{
+	color: red;
+    background-color: black;
+    height: 100px;
+    text-align: center;
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+    border-right:0; 
+    box-shadow:0 0 0; 
+    border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.right{
+    float: right;
+}
+.searchSpan {
+    margin: 21px;
+    padding: 4px;
+    border: 1px solid;
+    border-radius: 21px;
+}
+.boxBody{
+height: auto;
+    margin: 5px;
+}
+.margin-top{
+margin-top: 50px;
+}
+.boxHeading {
+    border-bottom: 2px solid;
+    line-height: 1;
+    padding: 5px;
+      background-color: rgba(128, 128, 128, 0.19);
+}
+
+.wrapBox{
+    border-radius: 5px;
+    border: 2px solid;
+  
+}
+.changeFontSize{
+    font-size: smaller;
+}
+.form-horizontal .form-group {
+    margin-right: 0px; 
+     margin-left: 0px; 
+}
+.form-horizontal .control-label{
+    text-align: left;
+}
+
+input.full-width {
+    width: 90%;
+}
+form.form-horizontal {
+    margin: 10px;
+}
+.padding-right0 {
+    padding-right: 0;
+}
+.glyphicon.glyphicon-user {
+    font-size: 100px;
+}
+span.glyphicon.glyphicon-user {
+    border: 1px solid;
+    background-color: rgba(128, 128, 128, 0.2);
+}
+.noborder{
+    border:none;
+}
+.nopaddingLeft{
+    padding-left: 0px;
+}
+.padding-right {
+    padding-right: 28px;
+}
+.wrapper {
+    padding: 5px;
+    padding-bottom: 0;
+    margin-bottom: -10px;
+}
+.para {
+    margin-left: 15%;
+}
+.postHeading {
+    margin-bottom: 30px;
+}
+li.pull-right.viewPost {
+    text-decoration: underline;
+}
+button#menu1 {
+    line-height: 0.4;
+}
