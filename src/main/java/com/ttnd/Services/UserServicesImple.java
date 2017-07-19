@@ -3,7 +3,9 @@ package com.ttnd.Services;
 import com.ttnd.Entity.User;
 import com.ttnd.dao.UserDao;
 import com.ttnd.dao.UserDaoImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServicesImple implements UserServices{
 
     private UserDao userdao;
@@ -18,4 +20,16 @@ public class UserServicesImple implements UserServices{
         userdao = new UserDaoImpl();
         return userdao.loginUser(username,password);
     }
+    @Override
+    public User getUserByEmail(String email){
+        userdao = new UserDaoImpl();
+        return userdao.getUserByEmail(email);
+    }
+
+    @Override
+    public void updatePassword(User user){
+        userdao = new UserDaoImpl();
+        userdao.updatePassword(user);
+    }
+
 }

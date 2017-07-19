@@ -48,4 +48,33 @@ public class UserDaoImpl implements UserDao{
        }
        return user;
     }
+    @Override
+    public User getUserByEmail(String email) {
+        User user=null;
+        Session session= HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        String sql = "FROM User U  WHERE U.email = :email";
+        Query query = session.createQuery(sql);
+        query.setParameter("email",email);
+
+       try{
+        Object queryResult = query.getSingleResult();
+        if(queryResult!=null) {
+            user = (User)queryResult;
+            session.getTransaction().commit();
+        }
+       }catch (Exception e){
+           return null;
+       }
+       return user;
+    }
+    @Override
+    public void updatePassword(User user){
+        Session session= HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+    }
+
 }

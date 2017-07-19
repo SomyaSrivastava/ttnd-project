@@ -12,13 +12,15 @@
 </head>
 <body>
 
-<h1> R E S E T   P A S S W O R D</h1>
+<h1>RESET PASSWORD</h1>
 <form method="post" action="/email-notification">
     <span>
     <label>Enter registered Email Address : </label>
     <input type="text" name="email"/>
     </span>
+    <input type="hidden" value="${email}" />
     <input type="submit"/>
+    ${msg}
 </form>
 </body>
 </html>

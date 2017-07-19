@@ -18,6 +18,7 @@
 
         <!--Annotated entity class-->
         <mapping class="com.ttnd.Entity.User"/>
+        <mapping class="com.ttnd.Entity.PasswordChangeRequest"/>
 
     </session-factory>
 </hibernate-configuration>
