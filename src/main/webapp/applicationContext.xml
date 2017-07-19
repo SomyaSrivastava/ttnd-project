@@ -20,7 +20,7 @@
             </props>
         </property>
     </bean>
-    <bean id="mail" class="com.ttnd.micro_services.MailNotification">
+    <bean id="mailMail" class="com.ttnd.Services.micro_services.MailNotification">
         <property name="mailSender" ref="mailSender" />
     </bean>
 </beans>

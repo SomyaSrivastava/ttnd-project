@@ -3,7 +3,6 @@ package com.ttnd.Entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.Instant;
-import java.util.Date;
 
 /**
  * Created by Lenovo-1 on 19-07-2017.
@@ -13,7 +12,6 @@ public class PasswordChangeRequest {
 
     @Id
     String email;
-
     String id;
     Instant time;
 

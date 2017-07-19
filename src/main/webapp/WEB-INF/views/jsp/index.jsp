@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
+<%if (session.getAttribute("user")!=null)
+        response.sendRedirect("/");
+%>
 <div class="container">
   <header>
     <div class="row ">
@@ -224,6 +227,7 @@
     </div><!-- margin top col 4 -->
   </div><!--master row end-->
 </div>
+okay
 
   <script type="text/javascript" src="/resources/assets/js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js">0</script>

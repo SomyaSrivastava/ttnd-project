@@ -41,20 +41,20 @@
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Create Topic(Pop up)</h4>
                                 </div>
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" action="createtopic" method="get">
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-2" for="name">Name*</label>
+                                            <label class="control-label col-sm-2" >Name*</label>
                                             <div class="col-sm-8 pull-right">
-                                                <input type="text" class="form-control" id="name">
+                                                <input type="text" class="form-control" name="name">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-2" for="Visibility">Visibility*</label>
+                                            <label class="control-label col-sm-2" for="visibility">Visibility*</label>
                                             <div class="col-sm-8 pull-right">
-                                                <select>
-                                                    <option value="1" selected="selected">Public</option>
-                                                    <option value="2">Private</option>
+                                                <select name="visibility">
+                                                    <option value="public" selected="selected">Public</option>
+                                                    <option value="private">Private</option>
                                                 </select>
                                             </div>
                                         </div>

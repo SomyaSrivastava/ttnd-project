@@ -19,6 +19,7 @@
     <input type="password" name="cpswd"/>
     <input type="hidden" name="email" value="${email}"/>
     <input type="submit"/>
+    ${msg}
 </form>
 </body>
 </html>

@@ -28,7 +28,8 @@ public class Resources {
         this.id = id;
     }
 
-    public String getDescription() {
+    public String getDescription
+            () {
         return description;
     }
 

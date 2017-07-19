@@ -1,4 +1,4 @@
-package com.ttnd.micro_services;
+package com.ttnd.Services.micro_services;
 
 import static org.junit.Assert.*;
 

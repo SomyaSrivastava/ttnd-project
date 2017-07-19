@@ -1,21 +1,16 @@
-package com.ttnd.micro_services;
+package com.ttnd.Services.micro_services;
 
 /**
  * Created by Lenovo-1 on 18-07-2017.
  */
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import javax.mail.MessagingException;
 
 @Service
 public class MailNotification {
+
     @Autowired
     private MailSender mailSender;
 

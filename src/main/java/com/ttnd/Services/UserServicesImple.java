@@ -31,5 +31,9 @@ public class UserServicesImple implements UserServices{
         userdao = new UserDaoImpl();
         userdao.updatePassword(user);
     }
-
+    @Override
+    public User getUserByUsername(String userName){
+        userdao = new UserDaoImpl();
+        return userdao.getUserByUsername(userName);
+    }
 }

@@ -9,5 +9,6 @@ public interface UserServices {
     public User loginUser(String username,String password);
     public User getUserByEmail(String email) ;
     public void updatePassword(User user);
+    public User getUserByUsername(String userName);
 
 }

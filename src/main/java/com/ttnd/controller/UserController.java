@@ -1,20 +1,13 @@
 package com.ttnd.controller;
-import com.ttnd.Entity.PasswordChangeRequest;
-import com.ttnd.Entity.User;
-import com.ttnd.Services.PasswordChangeRequestServices;
-import com.ttnd.Services.PasswordChangeRequestServicesImpl;
-import com.ttnd.Services.UserServices;
-import com.ttnd.Services.UserServicesImple;
-import com.ttnd.micro_services.MailNotification;
+import com.ttnd.Entity.*;
+import com.ttnd.Services.*;
+import com.ttnd.Services.micro_services.MailNotification;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.mail.SendFailedException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,7 +25,13 @@ public class UserController {
     MailNotification mailNotification;
     @Autowired
     PasswordChangeRequestServices passwordChangeRequestServices=new PasswordChangeRequestServicesImpl();
-//----------------------index------------------------
+    @Autowired
+    TopicServices topicServices=new TopicServicesImpl();
+
+    SubscriptionServices subscriptionServices=new SubscriptionServicesImpl();
+
+
+    //----------------------index------------------------
     @RequestMapping("/")
     ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
@@ -89,21 +88,25 @@ public class UserController {
             return modelAndView;
 
         }
-
     }
 
 //    ------------------------login---------------------------------
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(HttpServletRequest request, @RequestParam String username, @RequestParam String password) {
+
+        if (request.getSession().getAttribute("user")==null){
         User user = userServices.loginUser(username, password);
         if (user != null) {
             request.getSession().setAttribute("user", user);
             return new ModelAndView("dashboard");
         } else {
-            ModelAndView modelAndView = new ModelAndView("redirect:/");
+            ModelAndView modelAndView = new ModelAndView("index");
             modelAndView.addObject("LoginMessage", "Wrong credentials !");
             return modelAndView;
+        }
+        }else {
+            return new ModelAndView("redirect:/dashboard");
         }
     }
 
@@ -144,13 +147,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "password_update",method= RequestMethod.POST)
-    public ModelAndView password_update(@RequestParam("email") String email,@RequestParam("pswd") String password){
+    public ModelAndView password_update(@RequestParam("email") String email,@RequestParam("pswd") String password,@RequestParam("cpswd") String cpassword){
 //        --------password update----
         User user=(User)userServices.getUserByEmail(email);
-        if (user!=null) {
+        if (user!=null ) {
+            if (password.equals(cpassword)){
             user.setPassword(password);
             userServices.updatePassword(user);
-            return new ModelAndView("index","LoginMessage","Password updated.");
+            return new ModelAndView("index","LoginMessage","Password updated.");}else{
+                return new ModelAndView("update-password","msg","Passwords do not match!");
+            }
         }
         return new ModelAndView("index","LoginMessage","Password cannot be updated.");
 
@@ -188,9 +194,32 @@ public class UserController {
         return new ModelAndView("password-reset","msg","Link expired.");
     }
 
-    void saveAccessToken(String email,String otp){
+//--------------- Topic Controller ----------------
 
+
+    @RequestMapping(value = "/createtopic",method = RequestMethod.GET)
+    public ModelAndView topicCreation(HttpServletRequest request, @RequestParam("name") String name, @RequestParam("visibility") String visibility){
+        try {
+
+            User user=(User)request.getSession().getAttribute("user");
+            Topic topic=new Topic();
+            topic.setName(name);
+            topic.setUser(user);
+            topic.setDateCreated(new Date());
+            subscriptionServices.subscribe(topic,user,Seriousness.VERY_SERIOUS);
+            if (visibility.equals("private")) {
+                topic.setVisibility(Visibility.PRIVATE);
+            } else {
+                topic.setVisibility(Visibility.PUBLIC);
+            }
+            topicServices.createTopic(topic);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ModelAndView("dashboard");
     }
+
+
 }
 
 

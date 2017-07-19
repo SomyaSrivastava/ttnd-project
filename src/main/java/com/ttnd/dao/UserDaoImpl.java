@@ -33,20 +33,15 @@ public class UserDaoImpl implements UserDao{
         Session session= HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        String sql = "FROM User U  WHERE U.username = :username and  U.password =:password";
-        Query query = session.createQuery(sql);
-        query.setParameter("username",username);
-        query.setParameter("password",password);
-       try{
-        Object queryResult = query.getSingleResult();
-        if(queryResult!=null) {
-            user = (User)queryResult;
-            session.getTransaction().commit();
+//        ---search by username----
+        user=this.getUserByUsername(username);
+        if (user==null){
+            user=this.getUserByEmail(username);}
+        if (user!=null){
+            if(user.getPassword().equals(password))
+                return user;
         }
-       }catch (Exception e){
-           return null;
-       }
-       return user;
+        return user;
     }
     @Override
     public User getUserByEmail(String email) {
@@ -75,6 +70,19 @@ public class UserDaoImpl implements UserDao{
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
+    }
+
+    @Override
+    public User getUserByUsername(String userName){
+        Session session= HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        try {
+            User user = (User) session.get(User.class, userName);
+            session.getTransaction().commit();
+            return user;
+        }catch(Exception e){
+            return null;
+        }
     }
 
 }

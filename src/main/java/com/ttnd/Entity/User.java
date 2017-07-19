@@ -1,8 +1,7 @@
 package com.ttnd.Entity;
 
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 public class User {
@@ -36,6 +35,13 @@ public class User {
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
 
+
+    @OneToMany(mappedBy = "user")
+    Collection<Topic> topic= new HashSet<Topic>();
+
+
+    @OneToMany(mappedBy = "user")
+    List<Subscription> subscriptionList=new ArrayList<Subscription>();
 
     public User() {
     }

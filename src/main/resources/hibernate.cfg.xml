@@ -19,6 +19,10 @@
         <!--Annotated entity class-->
         <mapping class="com.ttnd.Entity.User"/>
         <mapping class="com.ttnd.Entity.PasswordChangeRequest"/>
+        <mapping class="com.ttnd.Entity.Topic"/>
+        <mapping class="com.ttnd.Entity.Seriousness"/>
+        <mapping class="com.ttnd.Entity.Subscription"/>
+        <mapping class="com.ttnd.Entity.Visibility"/>
 
     </session-factory>
 </hibernate-configuration>
